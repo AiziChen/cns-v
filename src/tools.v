@@ -52,5 +52,5 @@ pub fn xor_cipher(mut data []u8, secret string, subi u8, data_len int) u8 {
 pub fn decrypt_host(host string, secret string) string {
 	mut decrypted_host := base64.decode(host)
 	xor_cipher(mut decrypted_host, secret, 0, decrypted_host.len)
-	return decrypted_host.bytestr()
+	return decrypted_host[0..decrypted_host.len - 1].bytestr()
 }
